@@ -1,0 +1,88 @@
+/**index.wxss**/
+.page{
+  height: 100%;
+}
+.container{
+  padding: 0;
+}
+.background-login-top{
+  width: 100%;
+  height: 35%;
+  background-color: #2454f6;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+}
+.background-login-bottom{
+  width: 100%;
+  height: 65%;
+  background-color: #f4f7ff;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+}
+.title-text{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 3rpx;
+}
+.userinfo {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  color: #aaa;
+  width: 100%;
+}
+
+.userinfo-login {
+  overflow: hidden;
+  width: calc(100% - 80rpx);
+  height: 80%;
+  margin: 20rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+  position: relative;
+  z-index: 1;
+  margin: 150rpx 0;
+}
+
+.loginInputLabel{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+  /* margin: 20rpx 0; */
+  margin-top: 200rpx;
+}
+.loginInputLabel .van-row{
+  width: 80%;
+  margin: 0 10%;
+}
+.van-col{
+  width: 670rpx;
+}
+
+.textLabel{
+  width: 100%;
+  color: #000;   
+  font-weight: bold;
+  letter-spacing: 10rpx;
+}
+.loginBtnGroup{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 200rpx;
+}
+.loginBtn{
+  height: 200rpx;
+}

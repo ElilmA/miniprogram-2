@@ -1,0 +1,39 @@
+.personal-container{
+  height: calc(100% - 100rpx);
+  background-color: #F8F8F8;
+  display: flex;
+  flex-direction: column;
+}
+.personal-msg{
+  height: 300rpx;
+  background-color: #215cf8;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25rpx;
+}
+.msg{
+  width: 90%;
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+}
+.avtar{
+  width: 150rpx;
+  height: 150rpx;
+  background-color: #fff;
+  margin-right: 35rpx;
+}
+.name{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.personal-options{
+  margin: 20rpx 25rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  flex: 1;
+  border: 1px solid #000;
+}

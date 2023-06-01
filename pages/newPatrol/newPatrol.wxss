@@ -1,0 +1,7 @@
+/* pages/newPatrol/newPatrol.wxss */
+
+.btn-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,49 @@
+/* pages/repair/repair.wxss */
+
+.item-wrap{
+  padding: 20rpx;
+}
+.repair-item-wrap{
+  margin: 10rpx 20rpx;
+  background-color: #ffffff;
+  /* border: 1px solid #000; */
+  border-radius: 10rpx;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5)
+}
+.repair-item{
+  padding: 20rpx 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item-left{
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.left-img{
+  width: 200rpx;
+  height: 200rpx;
+  border: 2rpx solid #008D8E;
+  border-radius: 10rpx;
+}
+.left-img image{
+  width: 100%;
+  height: 100%;
+}
+.item-right{
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+}
+.right-row{
+  flex: 1;
+  align-items: center;
+}
+.loading{
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 50%;
+  text-align: center;
+}

@@ -1,0 +1,17 @@
+<!--pages/evaluate/evaluate.wxml-->
+<view class="star">
+  <van-rate value="{{ value }}" size="{{ 50 }}" allow-half color="rgb(255, 210, 30)" void-color="#eee" void-icon="star" bind:change="onChange" />
+</view>
+<van-cell-group inset>
+
+  <van-cell title="评价:" use-label-slot>
+    <view slot="label" style="border: 1rpx solid #e6e6e6;padding: 10rpx 20rpx;">
+      <textarea model:value="{{evaluate}}" />
+    </view>
+  </van-cell>
+</van-cell-group>
+
+<view class="btn-box">
+  <van-button type="info" data-btn-id="1" size="normal"  bindtap="submit">提交</van-button>
+  <van-button data-btn-id='0' type="warning" bindtap="submit" size="normal">驳回</van-button>
+</view>

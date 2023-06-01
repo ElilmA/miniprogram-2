@@ -1,0 +1,40 @@
+<!--pages/repair/repair.wxml-->
+
+    <view class="loading" wx:if="{{loading}}">
+      <van-loading />
+    </view>
+    <block wx:else>
+      <view style="text-align: center;padding-top: 50%;" wx:if="{{dataSource.length===0}}">
+        暂无数据
+      </view>
+      <block class="item-wrap">
+        <view wx:for="{{dataSource}}" class="repair-item-wrap">
+          <view class="repair-item" bindtap="openDetail" data-obj="{{item}}">
+            <view class="item-left">
+              <view class="left-img">
+                <!-- <img src="" alt=""/> -->
+                <image src="{{item.imgUrl}}"></image>
+              </view>
+            </view>
+            <view class="item-right">
+              <view class="right-row">
+                <van-icon name="user-o" />报修人：{{item.personnelName}}
+              </view>
+              <!-- <view class="right-row">
+                <van-icon name="phone-o" />报修电话：{{item.repairPhone}}
+              </view> -->
+              <view class="right-row">
+                <van-icon name="clock-o" />报修时间：{{item.createTime}}
+              </view>
+              <!-- <view class="right-row">
+                <van-icon name="orders-o" />报修原因：{{item.repairDescribe}}
+              </view> -->
+              <view class="right-row">
+                <van-icon name="orders-o" />维修状态：{{item.state==='0'?'未开始':item.state==='1'?'进行中':'已结束'}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  

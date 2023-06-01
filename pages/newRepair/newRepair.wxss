@@ -1,0 +1,25 @@
+/* pages/newRepair/newRepair.wxss */
+.btn-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+  padding:20rpx 0;
+}
+view .van-cell__value{
+  flex:2.5;
+  text-align: left;
+}
+.all-btn{
+  width: 100%;
+}
+.all-btn button{
+ width: 100%;
+}
+
+.evaluate-card{
+  box-shadow:  0px 0px 10rpx 0px rgba(0,0,0,0.5);
+  margin:30rpx;
+  border-radius: 10rpx;
+}

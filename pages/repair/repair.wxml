@@ -1,0 +1,150 @@
+<!--pages/repair/repair.wxml-->
+
+<van-tabs sticky bind:click="onTabClick">
+  <van-tab title="全部" name="all">
+    <view class="loading" wx:if="{{loading}}">
+      <van-loading />
+    </view>
+    <block wx:else>
+      <view style="text-align: center;padding-top: 100rpx;" wx:if="{{dataSource.length===0}}">
+        暂无数据
+      </view>
+      <block class="item-wrap">
+        <view wx:for="{{dataSource}}" class="repair-item-wrap">
+          <view class="repair-item" bindtap="openDetail" data-obj="{{item}}">
+            <view class="item-left">
+              <view class="left-img">
+                <!-- <img src="" alt=""/> -->
+                <image src="{{item.imgUrl}}"></image>
+              </view>
+            </view>
+            <view class="item-right">
+              <!-- <view class="right-row">
+                <van-icon name="fire-o" />等级：全部
+              </view> -->
+              <view class="right-row">
+                <van-icon name="user-o" />报修人：{{item.personnelName}}
+              </view>
+              <view class="right-row">
+                <van-icon name="phone-o" />报修电话：{{item.repairPhone}}
+              </view>
+              <view class="right-row">
+                <van-icon name="clock-o" />报修时间：{{item.createTime}}
+              </view>
+              <!-- <view class="right-row">
+                <van-icon name="orders-o" />报修原因：{{item.repairDescribe}}
+              </view> -->
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </van-tab>
+  <van-tab title="未处理" name="not">
+    <view class="loading" wx:if="{{loading}}">
+      <van-loading />
+    </view>
+    <block wx:else>
+      <view style="text-align: center;padding-top: 100rpx;" wx:if="{{dataSource.length===0}}">
+        暂无数据
+      </view>
+      <block class="item-wrap">
+        <view wx:for="{{dataSource}}" class="repair-item-wrap">
+          <view class="repair-item" bindtap="openDetail" data-obj="{{item}}">
+            <view class="item-left">
+              <view class="left-img">
+                <image src="{{item.imgUrl}}"></image>
+              </view>
+            </view>
+            <view class="item-right">
+              <!-- <view class="right-row">
+                等级：全部
+              </view> -->
+              <view class="right-row">
+                <van-icon name="user-o" />报修人：{{item.repairPersonnelName}}
+              </view>
+              <view class="right-row">
+                <van-icon name="phone-o" /> 报修电话：{{item.repairPhone}}
+              </view>
+              <view class="right-row">
+                <van-icon name="clock-o" /> 报修时间：{{item.createTime}}
+              </view>
+              <!-- <view class="right-row">
+                报修原因：{{item.repairDescribe}}
+              </view> -->
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </van-tab>
+  <van-tab title="已处理" name="sure">
+    <view class="loading" wx:if="{{loading}}">
+      <van-loading />
+    </view>
+    <block wx:else>
+      <view style="text-align: center;padding-top: 100rpx;" wx:if="{{dataSource.length===0}}">
+        暂无数据
+      </view>
+      <block class="item-wrap">
+        <view wx:for="{{dataSource}}" class="repair-item-wrap">
+          <view class="repair-item" bindtap="openDetail" data-obj="{{item}}">
+            <view class="item-left">
+              <view class="left-img">
+                <image src="{{item.imgUrl}}"></image>
+              </view>
+            </view>
+            <view class="item-right">
+              <!-- <view class="right-row">
+                等级：全部
+              </view> -->
+              <view class="right-row">
+                <van-icon name="user-o" /> 报修人：{{item.repairPersonnelName}}
+              </view>
+              <view class="right-row">
+                <van-icon name="phone-o" /> 报修电话：{{item.repairPhone}}
+              </view>
+              <view class="right-row">
+                <van-icon name="clock-o" />报修时间：{{item.createTime}}
+              </view>
+              <!-- <view class="right-row">
+                报修原因：{{item.repairDescribe}}
+              </view> -->
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </van-tab>
+
+  <!-- <van-tab title="紧急" name="urgent">
+    <block class="item-wrap">
+        <view wx:for="{{dataSource}}" class="repair-item-wrap">
+          <view class="repair-item"   bindtap="openDetail"  data-obj="{{item}}">
+            <view class="item-left">
+              <view class="left-img">
+                   <image src="{{item.imgUrl}}"></image>
+              </view>
+            </view>
+            <view class="item-right">
+              <view class="right-row">
+                等级：全部
+              </view>
+              <view class="right-row">
+                报修人：{{item.personnelName}}
+              </view>
+              <view class="right-row">
+                报修电话：{{item.repairPhone}}
+              </view>
+              <view class="right-row">
+                报修时间：{{item.createTime}}
+              </view>
+              <view class="right-row">
+                报修原因：{{item.repairDescribe}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+  </van-tab> -->
+</van-tabs>

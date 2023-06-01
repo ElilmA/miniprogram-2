@@ -1,0 +1,82 @@
+<!--index.wxml-->
+<view class="home-container">
+  <block>
+        <swiper 
+        class="home-swiper"
+        indicator-dots="true" 
+        autoplay="true" 
+        interval="5000"
+        circular="true"
+        duration="1000"
+        indicator-color="#bfbfbf"
+        indicator-active-color="#00ACED"
+      >
+        <block wx:for="{{bannerList}}">
+          <swiper-item>
+            <image src="{{item.imgurl}}" style="width: 100%;height: 100%;border-radius: 5px;"  referrerPolicy="no-referrer"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+    <block>
+      
+    </block>
+    <block wx:if="{{postId!=1}}">
+      <van-cell use-label-slot>
+          <view slot="title" >
+            <view class="van-cell-text">
+              <!-- <view class="preBar"></view> -->
+              我的任务
+            </view>
+          </view>
+        </van-cell>
+        <view class="block-box">
+          <van-grid column-num="2" border="{{ false }}">
+              <van-grid-item icon="todo-list-o" text="我的巡更"  bind:click='toMyTask' />
+              <van-grid-item icon="label-o" text="我的维修"  bind:click='toRepair' class="right"/>
+          </van-grid>
+        </view>
+        
+    </block>
+    <block>
+      <van-cell use-label-slot>
+          <view slot="title" >
+            <view class="van-cell-text">
+              <!-- <view class="preBar"></view> -->
+              我的上报
+            </view>
+          </view>
+        </van-cell>
+      <view class="block-box">
+        <van-grid column-num="3" border="{{ false }}">
+          <van-grid-item icon="back-top" text="我要报修" bind:click='toRepairApplication'/>
+          <van-grid-item icon="contact" text="我的报修" bind:click='toRepairReport'  class="right"/>
+          <!-- <van-grid-item icon="photo-o" text="报警" bind:click='toReportWarning'/> -->
+      </van-grid>
+      </view>
+    </block>
+    <block>
+     <view class="block-box">
+      <text>以行动践行安全，以安全铸就平安，以平安伴你回家。</text>
+     </view>
+    </block>
+  <!-- <view class="userinfo">
+    <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+</view>

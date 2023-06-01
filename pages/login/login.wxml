@@ -1,0 +1,37 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="background-login-top"></view>
+  <view class="background-login-bottom"></view>
+  <view class="title-text">
+    使用您的账号和密码登录
+  </view>
+  <view class="userinfo-login">
+    <van-cell-group>
+      <van-row :gutter="24" custom-class="loginInputLabel">
+        <van-col>
+          <van-row>
+          <van-icon name="user-o" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">账号</text>
+          </van-row>
+          <van-row>
+            <van-field model:value="{{ phoneNo }}" placeholder="请输入用户名" border="{{ true }}" />
+          </van-row>
+          <van-row>
+            <van-icon name="closed-eye" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">密码</text>
+          </van-row>
+          <van-row>
+            <van-field password model:value="{{ passWord }}" placeholder="请输入密码" border="{{ true }}" />
+          </van-row>
+        </van-col>
+      </van-row>
+    </van-cell-group>
+    <view class="loginBtnGroup">
+      <van-button custom-class="loginBtn" custom-style='width:500rpx;height:80rpx;' type="info" bind:click='doLogin' :loading='loginFlag'>登录</van-button>
+    </view>
+    <view class="loginBtnGroup" style="margin: 20rpx 0 50rpx 0;">
+      <van-button custom-class="loginBtn" custom-style='width:500rpx;height:80rpx;' type="info" bind:click='register' :loading='loginFlag'>注册</van-button>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />

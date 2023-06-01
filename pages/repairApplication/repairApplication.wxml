@@ -1,0 +1,44 @@
+<!--pages/repairApplication/repairApplication.wxml-->
+<!--pages/newPatrol/newPatrol.wxml-->
+<block>
+  <view>
+    <block>
+      <van-cell-group inset>
+        <van-cell required title="报修地点" >
+        </van-cell>
+        <van-field model:value="{{  location }}" placeholder="请输入报修地点"  />
+        <!-- <van-popup show="{{ showPoint }}" position="bottom" custom-style="height: 40%;" bind:close="onPointClose">
+          <van-picker show-toolbar="true" columns="{{ pointList }}" value-key="patrolPointName" bind:confirm="pickerConfirmPoint" bind:change="pickerPointChange" />
+        </van-popup> -->
+        <van-cell required title="报修区域" is-link model:value="{{repairArea}}" bind:click="showAreaPopup" arrow-direction="down">
+        </van-cell>
+        <van-popup show="{{ showArea }}" position="bottom" custom-style="height: 40%;" bind:close="onAreaClose">
+          <van-picker show-toolbar="true" columns="{{ areOptions }}" value-key="name" bind:confirm="pickerConfirmArea" bind:change="pickerChange" />
+        </van-popup>
+        <van-cell required title="报修类型" is-link model:value="{{typeName}}" bind:click="showTypePopup" arrow-direction="down">
+        </van-cell>
+        <van-popup show="{{ showType }}" position="bottom" custom-style="height: 40%;" bind:close="onTypeClose">
+          <van-picker show-toolbar="true" columns="{{ typeOptions }}" value-key="name" bind:confirm="pickerConfirmType" bind:change="pickerChange" />
+        </van-popup>
+        <!-- <van-cell required title="报修原因" is-link model:value="{{reason}}" bind:click="showReasonPopup" arrow-direction="down">
+        </van-cell>
+        <van-popup show="{{ showReason }}" position="bottom" custom-style="height: 40%;" bind:close="onReasonClose">
+          <van-picker show-toolbar="true" columns="{{ reasonOptions }}" value-key="name" bind:confirm="pickerConfirmReason" bind:change="pickerChange" />
+        </van-popup> -->
+        <van-cell title="详情描述" use-label-slot>
+          <view slot="label" style="border: 1rpx solid #e6e6e6;padding: 10rpx 20rpx;">
+            <textarea model:value="{{repairContent}}" />
+          </view>
+        </van-cell>
+        <van-cell title="图片描述（必填）" use-label-slot>
+          <view slot="label">
+            <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+          </view>
+        </van-cell>
+      </van-cell-group>
+    </block>
+  </view>
+  <view class="btn-box">
+    <van-button type="info" bindtap="submit">提交</van-button>
+  </view>
+</block>

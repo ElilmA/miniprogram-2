@@ -1,0 +1,55 @@
+/**index.wxss**/
+.home-container {
+  display: flex;
+  flex-direction: column;
+  color: #aaa;
+}
+.home-swiper{
+  width: 100%;
+}
+.van-cell{
+  background-color: #fff !important;
+}
+.van-cell-text{
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  font-weight: 500;
+  letter-spacing: 3rpx;
+}
+.preBar{
+  display: inline-block;
+  width:8rpx;
+  height: 40rpx;
+  background: #008D8E;
+  margin-right: 5rpx;
+}
+.block-box{
+  /* padding: 20rpx 40rpx; */
+  font-size: 34rpx;
+  width: 90%;
+  height: 200rpx;
+  border: 1rpx solid #f6f6f6;
+  margin: 0 5%;
+}
+
+.van-grid-item{
+  width: 40% !important;
+  margin-right: 10%;
+  color: #215cf8;
+}
+.van-grid-item .van-icon{
+  font-size: 100rpx;
+}
+.van-grid-item .van-grid-item__text{
+  margin-top: 30rpx !important;
+}
+.van-grid-item .van-grid-item__content{
+  padding: 46rpx 8rpx;
+}
+.van-grid-item{
+  margin:0 auto;
+}
+.right .van-grid-item{
+  float: right;
+}

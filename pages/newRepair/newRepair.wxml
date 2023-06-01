@@ -1,0 +1,61 @@
+<!--pages/newRepair/newRepair.wxml-->
+<!--pages/newPatrol/newPatrol.wxml-->
+<block>
+
+
+  <view>
+    <block>
+      <van-cell-group>
+        <van-cell title="报修编号" value="{{repairId}}">
+        </van-cell>
+        <van-cell title="报修地址" value="{{pointName}}">
+        </van-cell>
+        <van-cell title="报修区域" value="{{areaName}}">
+        </van-cell>
+        <van-cell title="报修类型" value="{{typeName}}">
+        </van-cell>
+        <!-- <van-cell title="报修原因" value="{{repairDescribe}}">
+        </van-cell> -->
+        <van-cell title="详情描述" size="large" use-label-slot>
+          <view slot="label" style="border: 1rpx solid #000;">
+            <textarea disabled="true" model:value="{{patrolDescript}}" />
+          </view>
+        </van-cell>
+
+        <van-cell title="图片" size="large" use-label-slot>
+          <!-- <view slot="label">
+                      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+                    </view> -->
+        </van-cell>
+        <view style="text-align: center;">
+          <image wx:for="{{fileList}}" src="{{item}}" bindtap="checkmap" data-index="{{index}}" mode="" />
+        </view>
+
+      <!-- 用户评价列表 -->
+      <view wx:for="{{evaluateList}}" class="evaluate-card">
+          <van-cell title="用户评分" value="{{item.evaluate}}">
+          </van-cell>
+          <van-cell title="用户评价" value="{{item.remark}}">
+          </van-cell>
+        </view>
+      </van-cell-group>
+    </block>
+  </view>
+  <view class="btn-box" wx:if="{{repairStatus==='1'}}">
+    <van-button type="info" bindtap="" disabled size="normal">有偿</van-button>
+    <van-button data-btn-id='1' type="info" wx:if="{{state==='4'}}" bindtap="submit" size="normal">开始维修</van-button>
+    <van-button wx:else data-btn-id='1-1' type="info" bindtap="submit" size="normal">维修完成</van-button>
+    <van-button data-btn-id='2' type="info" bindtap="submit" size="normal">待料维修</van-button>
+
+  </view>
+  <view class="btn-box" style="padding-top: 0;">
+    <van-button wx:if="{{repairStatus==='1'}}" data-btn-id='3' class="all-btn" type="info" bindtap="submit" size="warning">上报无法处理</van-button>
+    <van-button data-btn-id='4' wx:if="{{repairStatus===''}}" class="all-btn" type="info" bindtap="submit" size="warning">接单</van-button>
+  </view>
+  <view class="btn-box">
+    <!-- 报修任务按钮 -->
+    <van-button data-btn-id='5-1' wx:if="{{repairStatus==='5'}}" disabled="{{state!=='2' }}" type="info" bind:click="submit" size="normal">评价</van-button>
+    <van-button data-btn-id='5-2' wx:if="{{repairStatus==='5'}}" disabled type="info" bind:click="submit" size="normal">缴费</van-button>
+    <van-button data-btn-id='5-3' wx:if="{{repairStatus==='5'}}" disabled="{{state!=='0' }}" type="info" bind:click="submit" size="normal">撤回</van-button>
+  </view>
+</block>

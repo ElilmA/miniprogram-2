@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="personal-container">
+  <view class="personal-msg">
+    <view class="msg">
+      <image class="avtar" src="" mode=""/>
+      <view class="name">
+          <text style="flex: 1;display: flex;align-items: center;color: rgb(255, 255, 255);font-size: 45rpx;">{{personnelName}}</text>
+          <view  style="flex: 1;display: flex;align-items: center;color: rgb(255, 255, 255);">{{deptName}}</view>
+      </view>
+    </view>
+  </view>
+  <van-cell-group inset>
+    <van-cell title="姓名" value=""  is-link/>
+    <van-cell title="任职" value="" is-link/>
+    <van-cell title="邮箱" value="" is-link/>
+    <van-cell title="密码" value="" is-link/>
+    <van-cell title="地址" value="" is-link/>
+  </van-cell-group>
+  <view style="width:100%;position: fixed;bottom: 200rpx;display: flex;justify-content: center;">
+    <button style="width:70%;background-color: red; color: rgb(255, 255, 255);" bindtap="logout">退出登录</button>
+  </view>
+</view>

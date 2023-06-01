@@ -1,0 +1,29 @@
+<!--pages/patrol.wxml-->
+<view class="patrol-container">
+        <!-- <van-cell use-label-slot> -->
+            <view slot="title" class="patrol-title">
+              <view class="van-cell-text">
+                <van-icon name="location" style="color: #538fe5;margin-left: 10rpx;" />北方硅谷高科新城
+              </view>
+            </view>
+        <!-- </van-cell> -->
+        <block>
+          <view class="patrol-item-wrap"  wx:for="{{patrolPointList}}">
+          <view class="patrol-item {{item.patrolPatrolPointStatus == '0' ? 'patrolOn' : ''}}">
+            <view class="item-left">
+              <view>
+                  <text>{{item.patrolPointName}}</text>
+                </view>
+                <view>
+                  <text>{{item.patrolPointDescribe}}</text>
+                </view>
+            </view>
+            <block >
+              <view class="item-right"  wx:if="{{item.patrolPatrolPointStatus=='0'}}">
+                <button bindtap="scanCode"  data-obj="{{item}}">扫码</button>
+              </view>
+            </block>
+          </view>
+          </view>
+        </block>
+</view>

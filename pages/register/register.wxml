@@ -1,0 +1,46 @@
+<!--index.wxml-->
+<view class="container" style="padding-top: 100rpx;">
+  <view class="title-text">
+    填写账号和密码注册
+  </view>
+  <view class="userinfo-login">
+    <van-cell-group>
+      <van-row :gutter="24" custom-class="loginInputLabel">
+        <van-col>
+          <van-row>
+          <van-icon name="user-o" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">账号</text>
+          </van-row>
+          <van-row>
+            <van-field model:value="{{ username }}" placeholder="请输入用户名" border="{{ true }}" />
+          </van-row>
+          <van-row>
+            <van-icon name="closed-eye" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">密码</text>
+          </van-row>
+          <van-row>
+            <van-field password model:value="{{ password }}" placeholder="请输入密码" border="{{ true }}" />
+          </van-row>
+          <van-row>
+            <van-icon name="closed-eye" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">确认密码</text>
+          </van-row>
+          <van-row>
+            <van-field password model:value="{{ confirmPassword }}" placeholder="请再次输入密码" border="{{ true }}" />
+          </van-row>
+          <van-row>
+            <van-icon name="phone-o" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">手机号</text>
+          </van-row>
+          <van-row>
+            <van-field model:value="{{ phoneNumber }}" placeholder="请输入手机号" border="{{ true }}" />
+          </van-row>
+        </van-col>
+      </van-row>
+    </van-cell-group>
+    <view class="loginBtnGroup">
+      <van-button custom-class="loginBtn" custom-style='width:500rpx;height:80rpx;' type="info" bind:click='register' :loading='loginFlag'>提交注册</van-button>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />

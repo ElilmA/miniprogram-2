@@ -1,0 +1,16 @@
+/* custom-tab-bar/index.wxss */
+.tab-bar{
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 55rpx;
+  background-color: #215af8b2;
+  position: absolute;
+  left: calc(50% - 50rpx);
+  bottom: 80rpx;
+}
+.tab-bar-2{
+  width: 40%;
+  height: 100rpx;
+  position: absolute;
+  right: 0;
+}

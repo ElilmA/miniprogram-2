@@ -1,0 +1,39 @@
+<!--pages/newPatrol/newPatrol.wxml-->
+<block>
+        <van-cell use-label-slot>
+            <view slot="title" >
+              <view class="van-cell-text">
+                <van-icon name="location"  style="color: #008D8E;"/>{{patrolPointName}}
+              </view>
+            </view>
+        </van-cell>
+        <view>
+            <block>
+              <van-cell-group>
+                  <van-cell title="巡更结果" is-link value="{{patrolResult}}" bind:click="showPopup" arrow-direction="down" >
+                  </van-cell>
+                  <van-popup
+                    show="{{ show }}"
+                    position="bottom"
+                    custom-style="height: 40%;"
+                    bind:close="onClose"
+                  >
+                    <van-picker show-toolbar="true" columns="{{ columns }}" value-key="text" bind:confirm="pickerConfirm" bind:change="pickerChange"/>
+                  </van-popup>
+                  <van-cell title="填写巡更内容" size="large" use-label-slot>
+                    <view slot="label" style="border: 1rpx solid #000;">
+                      <textarea model:value="{{patrolDescript}}"/>
+                    </view>
+                  </van-cell>
+                  <van-cell title="图片描述（必填）" size="large" use-label-slot>
+                    <view slot="label">
+                      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+                    </view>
+                  </van-cell>
+              </van-cell-group>
+            </block>
+        </view>
+       <view class="btn-box">
+        <van-button type="info" bindtap="submit">提交</van-button>
+       </view>
+</block>
