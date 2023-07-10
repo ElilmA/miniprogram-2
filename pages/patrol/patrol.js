@@ -27,6 +27,7 @@ Page({
     //   patrolPointId:options.patrolPointId
     // })
     this.getDataList(options.patrolPointId,options.patrolPointName)
+    this.nfcRead()
   },
 
   /**
@@ -105,6 +106,101 @@ Page({
       }
     })
   },
+  // 进行使用nfc功能
+  nfcRead() {
+    console.log('nfc')
+    const nfc = wx.getNFCAdapter()
+    this.nfc = nfc
+    let _this = this
+    function discoverHandler(res) {
+      var buffer = res.messages[0].records[0].payload;
+      //获取Uint8Array 
+      var dataview = new DataView(buffer);
+      console.log('dataview', dataview)
+      //获取Uint8Array数组
+      var ints = new Uint8Array(buffer);
+      console.log('ints', ints)
+      //截取数组
+      var shuzu = ints.slice(3);
+      console.log('shuzu', shuzu)
+      // 编译Uint8Array数组
+      let unit8Arr = new Uint8Array(shuzu);
+      let encodedString = String.fromCharCode.apply(null, unit8Arr),
+        // 处理中文乱码
+        decodedString = decodeURIComponent(escape((encodedString)));
+      // 赋值
+      console.log(decodedString);
+      wx.navigateTo({
+        url: '../newPatrol/newPatrol?patrolId=' + parseInt(_this.data.patrolId) + '&patrolPointId=' + decodedString,
+      })
+      // console.log('discoverHandler', res)
+      // const data = new Uint8Array(res.id)
+      // let str = ""
+      // data.forEach(e => {
+      //   let item = e.toString(16)
+      //   if (item.length == 1) {
+      //     item = '0' + item
+      //   }
+      //   item = item.toUpperCase()
+      //   console.log(item)
+      //   str += item
+      // })
+      // _this.setData({
+      //   newCardCode: str
+      // })
+      // console.log(str)
+      wx.showToast({
+        title: '读取成功！',
+        icon: 'none'
+      })
+    }
+    nfc.startDiscovery({
+      success(res) {
+        console.log(res)
+        wx.showToast({
+          title: 'NFC读取功能已开启！',
+          icon: 'none'
+        })
+        nfc.onDiscovered(discoverHandler)
+      },
+      fail(err) {
+        console.log('failed to discover:', err)
+        if (!err.errCode) {
+          wx.showToast({
+            title: '请检查NFC功能是否正常!',
+            icon: 'none'
+          })
+          return
+        }
+        switch (err.errCode) {
+          case 13000:
+            wx.showToast({
+              title: '设备不支持NFC!',
+              icon: 'none'
+            })
+            break;
+          case 13001:
+            wx.showToast({
+              title: '系统NFC开关未打开!',
+              icon: 'none'
+            })
+            break;
+          case 13019:
+            wx.showToast({
+              title: '用户未授权!',
+              icon: 'none'
+            })
+            break;
+          case 13010:
+            wx.showToast({
+              title: '未知错误!',
+              icon: 'none'
+            })
+            break;
+        }
+      }
+    })
+  },
   scanCode(e) {
     let token = wx.getStorageSync('token')
     let headers = {
@@ -156,25 +252,26 @@ Page({
               that.setData({
                 scanCodeMsg: res.result
               });
-              wx.request({
-                url: app.globalData.baseUrl +'/system/patrolOrder',
-                method:'POST',
-                header:headers,
-                data:{
-                  patrolId:parseInt(that.data.patrolId),
-                  patrolPointId:patrolPointId,
-                  patrolResult:null,
-                  PatrolContent:null,
-                  remark:null,
-                  imgUrls:null
-                },
-                success:(res)=>{
-                  console.log(res);
-                  wx.navigateTo({
-                    url: '../patrol/patrol?patrolPointId=' + that.data.patrolId + '&patrolPointName=' + that.data.patrolPointName,
-                  })
-                }
+              wx.navigateTo({
+                url: '../newPatrol/newPatrol?patrolId=' + parseInt(that.data.patrolId) + '&patrolPointId=' + patrolPointId,
               })
+              // wx.request({
+              //   url: app.globalData.baseUrl +'/system/patrolOrder',
+              //   method:'POST',
+              //   header:headers,
+              //   data:{
+              //     patrolId:parseInt(that.data.patrolId),//
+              //     patrolPointId:patrolPointId,//
+              //     patrolResult:null,
+              //     PatrolContent:null,
+              //     remark:null,
+              //     imgUrls:null
+              //   },
+              //   success:(res)=>{
+              //     console.log(res);
+                  
+              //   }
+              // })
             }
           },
           fail: (err) => {

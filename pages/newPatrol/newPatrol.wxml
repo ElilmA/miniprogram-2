@@ -1,39 +1,73 @@
 <!--pages/newPatrol/newPatrol.wxml-->
 <block>
-        <van-cell use-label-slot>
-            <view slot="title" >
-              <view class="van-cell-text">
-                <van-icon name="location"  style="color: #008D8E;"/>{{patrolPointName}}
-              </view>
-            </view>
-        </van-cell>
-        <view>
-            <block>
-              <van-cell-group>
-                  <van-cell title="巡更结果" is-link value="{{patrolResult}}" bind:click="showPopup" arrow-direction="down" >
-                  </van-cell>
-                  <van-popup
-                    show="{{ show }}"
-                    position="bottom"
-                    custom-style="height: 40%;"
-                    bind:close="onClose"
-                  >
-                    <van-picker show-toolbar="true" columns="{{ columns }}" value-key="text" bind:confirm="pickerConfirm" bind:change="pickerChange"/>
-                  </van-popup>
-                  <van-cell title="填写巡更内容" size="large" use-label-slot>
-                    <view slot="label" style="border: 1rpx solid #000;">
-                      <textarea model:value="{{patrolDescript}}"/>
-                    </view>
-                  </van-cell>
-                  <van-cell title="图片描述（必填）" size="large" use-label-slot>
-                    <view slot="label">
-                      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
-                    </view>
-                  </van-cell>
-              </van-cell-group>
-            </block>
+  <van-cell use-label-slot>
+    <view slot="title">
+      <view class="van-cell-text">
+        <van-icon name="location" style="color: #008D8E;" />{{patrolPointName}}
+      </view>
+    </view>
+  </van-cell>
+  <view>
+    <block>
+      <van-cell-group>
+        <view wx:for="{{topicColumns}}" wx:for-item="items" wx:for-index="indexs">
+          <van-cell-group>
+            <van-cell title="题目" value="{{items.itemTitle}}" />
+          </van-cell-group>
+
+          <van-radio-group wx:if="{{items.titleType == '1001'}}">
+            <van-cell-group>
+              <van-cell wx:for="{{items.inspectionItemTitleValue}}" title="{{item.itemValue}}" clickable bindtap="radioAnswerInfo">
+                  <van-radio name="{{item.valueId}}" />
+              </van-cell>
+            </van-cell-group>
+          </van-radio-group>
+
+          <!-- <van-checkbox-group v-model="multipleAnswer" wx:elif="{{item.titleType  == '2002'}}">
+            <van-cell-group>
+              <van-cell v-for="(i, index) in {{item.inspectionItemTitleValue}}" clickable :key="i" :title="i.valueId" bind:click="toggle(index)">
+                <template>
+                  <van-checkbox :name="i.itemValue" ref="checkboxes" />
+                </template>
+              </van-cell>
+            </van-cell-group>
+          </van-checkbox-group> -->
+
+          <van-cell-group inset wx:else>
+            <van-field label="答案" placeholder="请输入答案" />
+          </van-cell-group>
         </view>
-       <view class="btn-box">
-        <van-button type="info" bindtap="submit">提交</van-button>
-       </view>
+
+        <!-- <van-cell title="题目" is-link value="{{item.itemTitle}}" bind:click="showTopic" arrow-direction="down">
+          </van-cell> -->
+        <!-- <van-popup show="{{ topic }}" position="bottom" custom-style="height: 40%;" bind:close="closeTopic">
+            <van-picker show-toolbar="true" columns="{{ topicColumns }}" value-key="itemTitle" bind:confirm="topicConfirm" bind:change="topicChange" />
+          </van-popup> -->
+        <!-- <van-cell title="选项" is-link value="{{optionName}}" bind:click="showOption" arrow-direction="down">
+          </van-cell>
+          <van-popup show="{{ option }}" position="bottom" custom-style="height: 40%;" bind:close="closeOption">
+            <van-picker show-toolbar="true" columns="{{ optionColumns }}" value-key="itemValue" bind:confirm="optionConfirm" bind:change="optionChange" />
+          </van-popup> -->
+
+        <van-cell title="巡更结果" is-link value="{{patrolResult}}" bind:click="showPopup" arrow-direction="down">
+        </van-cell>
+        <van-popup show="{{ show }}" position="bottom" custom-style="height: 40%;" bind:close="onClose">
+          <van-picker show-toolbar="true" columns="{{ columns }}" value-key="text" bind:confirm="pickerConfirm" bind:change="pickerChange" />
+        </van-popup>
+        <van-cell title="填写巡更内容" size="large" use-label-slot>
+          <view slot="label" style="border: 1rpx solid #000;">
+            <textarea model:value="{{patrolDescript}}" />
+          </view>
+        </van-cell>
+        <van-cell title="图片描述（必填）" size="large" use-label-slot>
+          <view slot="label">
+            <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+          </view>
+        </van-cell>
+      </van-cell-group>
+    </block>
+  </view>
+  <view class="btn-box">
+    <van-button type="info" bindtap="submit">提交</van-button>
+  </view>
 </block>

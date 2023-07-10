@@ -8,7 +8,7 @@
       <van-row :gutter="24" custom-class="loginInputLabel">
         <van-col>
           <van-row>
-          <van-icon name="user-o" style="margin-right: 10rpx;"></van-icon>
+            <van-icon name="user-o" style="margin-right: 10rpx;"></van-icon>
             <text class="textLabel">账号</text>
           </van-row>
           <van-row>
@@ -34,6 +34,18 @@
           </van-row>
           <van-row>
             <van-field model:value="{{ phoneNumber }}" placeholder="请输入手机号" border="{{ true }}" />
+          </van-row>
+
+          <van-row>
+            <van-icon name="expand-o" style="margin-right: 10rpx;"></van-icon>
+            <text class="textLabel">区域</text>
+          </van-row>
+          <van-row>
+            <van-cell title="区域" is-link model:value="{{repairArea}}" bind:click="showAreaPopup" arrow-direction="down">
+            </van-cell>
+            <van-popup show="{{showPoint}}" position="bottom" bind:close="onAreaClose">
+              <van-picker show-toolbar="true" columns="{{ showPicker }}" value-key="name" bind:confirm="onConfirm" />
+            </van-popup>
           </van-row>
         </van-col>
       </van-row>

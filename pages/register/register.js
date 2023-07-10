@@ -10,7 +10,44 @@ Page({
     "phoneNumber": "",
     "password": "",
     "confirmPassword": "",
-    loginFlag:false
+    loginFlag:false,
+    showPoint:false,
+    showPicker:[],
+    repairArea:"",
+    regionId:""
+  },
+  //点击区域
+  showAreaPopup() {
+    this.setData({
+      showPoint: true
+    });
+  },
+  onAreaClose() {
+    this.setData({
+      showPoint: false
+    });
+  },
+  onConfirm(event){
+    console.log(event);
+    this.setData({
+      repairArea: event.detail.value.name,
+      regionId: event.detail.value.regionId,
+    });
+    this.onAreaClose()
+  },
+  areaList(){
+    wx.request({
+      url:app.globalData.baseUrl + '/app/listAll',
+      method:"GET",
+      success:(res) => {
+        console.log(res);
+        if(res.data.code=='200'){
+          this.setData({
+            showPicker:res.data.rows
+          })
+        }
+      }
+    })
   },
   register(){
     //提交注册
@@ -88,6 +125,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '注册'
     })
+    this.areaList();
   },
 
   /**

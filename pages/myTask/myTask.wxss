@@ -46,6 +46,16 @@
   color: #fff;
   border-radius: 10rpx;
 }
+.patrolOut.patrol-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: calc(100% - 80rpx);
+  padding: 40rpx 20rpx;
+  /* background-color: #01A7F0; */
+  color: #fff;
+  border-radius: 10rpx;
+}
 .patrolOff.patrol-item{
   display: flex;
   flex-direction: row;

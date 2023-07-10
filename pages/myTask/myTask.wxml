@@ -9,7 +9,7 @@
         <!-- </van-cell> -->
         <block>
           <view class="patrol-item-wrap"  wx:for="{{patrolPointList}}" bindtap="toDetail"  data-obj="{{item}}">
-          <view class="patrol-item patrolOn">
+          <view class="{{item.patrolStatus == 3 ? 'patrol-item patrolOut' : 'patrol-item patrolOn'}}">
             <view class="item-left">
               <view>
                   <text>{{item.patrolName}}</text>
